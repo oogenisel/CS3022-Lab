@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About - Crabby Server</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            color: #333;
+        }
+        .message {
+            background-color: #e7f3fe;
+            border-left: 4px solid #2196F3;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        button {
+            background-color: #008CBA;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+        button:hover {
+            background-color: #007399;
+        }
+        #counter {
+            font-size: 48px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        a {
+            color: #2196F3;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>About Page</h1>
+    
+    <div class="message" id="messageDisplay">
+        Loading...
+    </div>
+    
+    <h2>Counter Demo</h2>
+    <div id="counter">0</div>
+    
+    <button onclick="increment()">+1</button>
+    <button onclick="decrement()">-1</button>
+    <button onclick="reset()">Reset</button>
+    <button onclick="showAlert()">Show Count</button>
+    
+    <p><a href="/">← Back to Home</a></p>
+    
+    <script>
+        // Display message from URL
+        const params = new URLSearchParams(window.location.search);
+        const msg = params.get('msg');
+        const msgBox = document.getElementById('messageDisplay');
+        
+        if (msg) {
+            msgBox.textContent = 'Message: ' + msg.replace(/_/g, ' ');
+        } else {
+            msgBox.textContent = 'No message received';
+        }
+        
+        // Counter functions
+        let count = 0;
+        
+        function updateCounter() {
+            document.getElementById('counter').textContent = count;
+        }
+        
+        function increment() {
+            count++;
+            updateCounter();
+        }
+        
+        function decrement() {
+            count--;
+            updateCounter();
+        }
+        
+        function reset() {
+            count = 0;
+            updateCounter();
+            alert('Counter reset!');
+        }
+        
+        function showAlert() {
+            alert('Current count: ' + count);
+        }
+    </script>
+</body>
+</html>
